@@ -1,13 +1,50 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-slider {
+  appearance: none;
+  height: 5px;
+  border-radius: 2px;
+  outline: none;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  cursor: pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-slideInFromRight {
+  position: absolute;
+  right: 0;
+  transition: transform 500ms;
+}
+
+.animate-slideInFromRight:focus-visible {
+  transform: translateY(-1.75rem);
+}
+
+/* .animate-slideInFromRight {
+    @apply absolute right-0 transform translate-x-full  transition-transform duration-500 ease-in-out;
+  } */
+
+.hover-button:hover button {
+  background-color: #434a57;
+  color: white;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.img-main {
+  @apply object-fill w-full rounded-lg h-full  transform transition-transform duration-300 hover:scale-105 cursor-pointer
+}
+
+.main-button {
+  @apply rounded-2xl absolute bottom-6 left-6 p-3 px-8  bg-white;
 }
