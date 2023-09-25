@@ -3,11 +3,16 @@ import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Nav from "./pages/Nav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShoppingProps } from "./types/Types";
 import Footer from "./pages/Footer";
 import SingleItemCard from "./components/singleItemComponents/SingleItemCard";
 import Main from "./pages/Main";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Auth from "./pages/Auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/Firebase";
 
 function App() {
   const [cart, setCart] = useState<ShoppingProps[]>([]);
@@ -27,18 +32,23 @@ function App() {
 
     setCounter((prevCount) => prevCount + 1);
   }
-  const loading = false;
-  const products: ShoppingProps[] = [];
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user?.email);
+    });
+  }, []);
+
   return (
     <Router>
       <Nav counter={counter} />
       <Routes>
         <Route
-          path="/"
+          path="/Shopping"
           element={<HomePage handleCart={handleCart} cart={cart} />}
         />
         <Route
-          path="/cart"
+          path="/Shopping/Item/cart"
           element={
             <Cart
               cart={cart}
@@ -49,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/item/:id"
+          path="/Shopping/Item/:id"
           element={
             <SingleItemCard
               isSingleItemView={true}
@@ -58,7 +68,13 @@ function App() {
             />
           }
         />
-        <Route path="/home" element={<Main handleCart={handleCart} cart={cart} />} />
+        <Route
+          path="/"
+          element={<Main handleCart={handleCart} cart={cart} />}
+        />
+        <Route path="/Blog" element={<Blog />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/my-account" element={<Auth />} />
       </Routes>
       <Footer />
     </Router>

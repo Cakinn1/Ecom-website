@@ -1,20 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ItemProps, MainItemProps, ShoppingProps } from "../../types/Types";
 
 export default function MainPosts({
   item,
   loading,
+  isDecor,
 }: {
   item: ItemProps;
   loading: boolean;
+  isDecor?: boolean;
 }) {
+  const title = item.title.replaceAll("Naga", "Bracelet");
+  const titleResult = title.substring(0, title.indexOf("Gold"));
+  console.log(titleResult);
   return (
     <>
       {loading ? (
         new Array(3).fill(0).map((_, index) => (
           <div
             key={index}
-            className="w-[30%] bg-white items-center p-8 m-3 rounded-lg flex min-h-[200px] h-full gap-x-4 "
+            className="lg:w-[30%] w-full md:w-[46%] bg-white items-center z-50 p-8 m-3 rounded-lg flex min-h-[140px] h-full gap-x-4 "
           >
             <div className="h-[50px] w-[70px] bg-gray-400 animate-pulse rounded-md" />
             <div className="flex flex-col justify-center space-y-4">
@@ -24,13 +30,24 @@ export default function MainPosts({
           </div>
         ))
       ) : (
-        <div  className="w-[30%] bg-white items-center p-8 m-3 rounded-lg flex min-h-[200px] h-full gap-x-4 ">
+        <Link
+          to={`/Shopping/Item/${item.id}`}
+          className={`w-full md:w-[46%]  lg:w-[30%] bg-white items-center p-8 m-3 rounded-lg flex min-h-[140px] h-full gap-x-4 ${
+            isDecor ? " md:w-[55%] lg:w-[55%]" : ""
+          }`}
+        >
           <img className="h-[50px]" src={item.image} alt="" />
-          <div className="flex flex-col justify-center">
-            <p className="">{item.title.slice(0, 13)}</p>
-            <p>${item.price}</p>
+          <div className="flex flex-col justify-center ">
+            <p className="font-bold text-[#434A57]">
+              {item.title.split("J")[0].slice(0, 13)}
+            </p>
+
+            {isDecor && (
+              <p className="font-bold text-[#434A57]">{titleResult}</p>
+            )}
+            <p className="text-left text-[#576071]">${item.price}</p>
           </div>
-        </div>
+        </Link>
       )}
     </>
   );

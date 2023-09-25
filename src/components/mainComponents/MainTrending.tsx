@@ -19,17 +19,18 @@ export default function MainTrending({ handleCart, cart }: ItemCardProps) {
     fetchData(text);
   }, []);
   return (
-    <section className="mx-auto max-w-[1200px] p-6 min-h-screen h-full">
+    <section className="mx-auto max-w-[1200px] p-6 min-h-screen ">
       <div className="flex flex-wrap gap-x-4  ">
         <ItemCards
           handleCart={handleCart}
           cart={cart}
           products={posts}
           loading={loading}
+          isTrending={true}
         />
       </div>
       <div className="flex">
-        <Link to="/" className="mx-auto">
+        <Link to="/Shopping" className="mx-auto">
           <button className="mx-auto p-4 border-black border">
             View all products
           </button>

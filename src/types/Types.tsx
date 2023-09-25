@@ -60,6 +60,7 @@ export interface ItemProps {
   image: string;
   title: string;
   price: number;
+  id: number
 }
 
 export interface MainItemProps {

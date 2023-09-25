@@ -31,22 +31,22 @@ export default function ItemCards({
     return stars;
   }
   return (
-    <div className="flex  flex-wrap  w-full ">
+    <div className="flex  flex-wrap  w-full text-[#434a57] ">
       {loading
         ? new Array(9)
             .fill(0)
             .map((_, index) => (
               <div
-                className="w-[28%] m-4 bg-gray-400 h-[250px] animate-pulse"
+                className="w-full md:w-[45%] lg:w-[28%] m-4 bg-gray-400 h-[250px] animate-pulse"
                 key={index}
               ></div>
             ))
-        : isTrending === false
+        : isTrending === true
         ? products?.slice(3, 7).map((item) => (
-            <div key={item.id} className="w-[28%] m-4 ">
+            <div key={item.id} className=" w-full md:w-[45%] lg:w-[28%] m-4 ">
               {isSingleItemView === true && (
-                <Link to={`/item/${item.id}`}>
-                  <div className="  bg-opacity-20 shadow-md flex justify-center items-center h-[300px]">
+                <Link to={`/Shopping/Item/${item.id}`}>
+                  <div className=" bg-opacity-20  shadow-md flex justify-center items-center h-[300px]">
                     <img
                       src={item.image}
                       className="w-[200px] object-contain h-[200px]"
@@ -56,8 +56,8 @@ export default function ItemCards({
                 </Link>
               )}
               {isSingleItemView === false && (
-                <Link to={`/item/${item.id}`}>
-                  <div className="  bg-opacity-20 shadow-md flex justify-center items-center h-[300px]">
+                <Link to={`/Shopping/Item/${item.id}`}>
+                  <div className="bg-opacity-20 shadow-md text-[#649aaa] flex justify-center items-center lg:h-[300px] py-10 lg:py-0 ">
                     <img
                       src={item.image}
                       className="w-[200px] object-contain h-[200px]"
@@ -68,9 +68,9 @@ export default function ItemCards({
               )}
 
               <div className="p-4 space-y-2">
-                <p>{item.title}</p>
+                <p className="font-bold">{item.title}</p>
                 <div className="flex justify-between items-center">
-                  <p>${item.price}</p>
+                  <p className="text-[#576071]">${item.price}</p>
                   <div className="relative">
                     <button
                       onClick={() => handleCart(item)}
@@ -80,7 +80,7 @@ export default function ItemCards({
                     </button>
                     {cart?.some((cartItem) => cartItem.id === item.id) && (
                       <div className="absolute  transform top-0 -left-20 w-full group-hover:opacity-100 transition-opacity duration-200">
-                        <Link to="/cart">
+                        <Link to="/Shopping/Item/cart">
                           <p className="w-[70px]">view cart</p>
                         </Link>
                       </div>
@@ -94,9 +94,9 @@ export default function ItemCards({
             </div>
           ))
         : products?.map((item) => (
-            <div key={item.id} className="w-[28%] m-4 ">
+            <div key={item.id} className="lg:w-[28%] m-4 w-full md:w-[45%] ">
               {isSingleItemView === true && (
-                <Link to={`/item/${item.id}`}>
+                <Link to={`/Shopping/Item/${item.id}`}>
                   <div className="  bg-opacity-20 shadow-md flex justify-center items-center h-[300px]">
                     <img
                       src={item.image}
@@ -107,8 +107,8 @@ export default function ItemCards({
                 </Link>
               )}
               {isSingleItemView === false && (
-                <Link to={`/item/${item.id}`}>
-                  <div className="  bg-opacity-20 shadow-md flex justify-center items-center h-[300px]">
+                <Link to={`/Shopping/item/${item.id}`}>
+                  <div className=" bg-opacity-20 shadow-md flex justify-center items-center h-[300px]  py-10 lg:py-0">
                     <img
                       src={item.image}
                       className="w-[200px] object-contain h-[200px]"
@@ -117,11 +117,10 @@ export default function ItemCards({
                   </div>
                 </Link>
               )}
-
               <div className="p-4 space-y-2">
-                <p>{item.title}</p>
+                <p className="font-bold">{item.title}</p>
                 <div className="flex justify-between items-center">
-                  <p>${item.price}</p>
+                  <p className="text-[#576071]">${item.price}</p>
                   <div className="relative">
                     <button
                       onClick={() => handleCart(item)}
@@ -131,7 +130,7 @@ export default function ItemCards({
                     </button>
                     {cart?.some((cartItem) => cartItem.id === item.id) && (
                       <div className="absolute  transform top-0 -left-20 w-full group-hover:opacity-100 transition-opacity duration-200">
-                        <Link to="/cart">
+                        <Link to="/Shopping/Item/cart">
                           <p className="w-[70px]">view cart</p>
                         </Link>
                       </div>

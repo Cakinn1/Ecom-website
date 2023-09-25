@@ -39,6 +39,16 @@ export default function Home({ handleCart, cart }: any) {
   useEffect(() => {
     fetchData();
   }, [text, sortOrder, price]);
+  console.log(products);
+
+  const uppercaseFirstLetter = products
+    .slice(0, 1)
+    .map(
+      (item) =>
+        item.category.charAt(0).toUpperCase() +
+        item.category.slice(1, item.category.length)
+    );
+
   return (
     <div className="flex">
       <HomeSideBar
@@ -49,28 +59,32 @@ export default function Home({ handleCart, cart }: any) {
       />
       <section className="w-full">
         <div className="flex flex-col space-y-8 px-4 mb-10">
-          <h1 className="font-bold">kitchen</h1>
+          {loading ? (
+            <h1 className="font-bold h-10 bg-gray-400 animate-pulse w-40"></h1>
+          ) : (
+            <h1 className="font-bold text-3xl">{uppercaseFirstLetter}</h1>
+          )}
           <div className="flex justify-between items-center">
             {loading ? (
-              <p className="flex justify-center items-center gap-x-1">
+              <p className="flex justify-center items-center gap-x-1 text-[#576071] tracking-wide text-sm ">
                 Showing all{" "}
-                <p className="w-6 h-5 animate-pulse  rounded-lg bg-gray-400 "></p>{" "}
+                <p className="w-6 h-5 animate-pulse  rounded-lg bg-gray-400 text-[#576071] tracking-wide text-sm "></p>{" "}
                 results
               </p>
             ) : (
-              <p>Showing all ({results}) results</p>
+              <p className="text-[#576071] tracking-wide text-sm">Showing all ({results}) results</p>
             )}
             <select
-              className="focus:outline-none text-sm"
+              className="focus:outline-none text-[#576071] tracking-wide text-sm"
               name=""
               id=""
               onChange={(e) => setSortOrder(e.target.value)}
             >
-              <option value="Default">Default Sorting</option>
-              <option value="lowestToHighest">Lowest to Highest</option>
-              <option value="highestToLowest">Highests to lowest</option>
-              <option value="lowestRating">Low Rating</option>
-              <option value="highestRating">Highest Rating</option>
+              <option value="Default">Default</option>
+              <option value="lowestToHighest">Price: Low to High</option>
+              <option value="highestToLowest">Price: High to Low</option>
+              <option value="lowestRating">Rating: Low to High</option>
+              <option value="highestRating">Rating: High to Low</option>
             </select>
           </div>
         </div>

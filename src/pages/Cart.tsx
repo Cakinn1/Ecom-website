@@ -1,5 +1,5 @@
 import { CartProps, ShoppingProps } from "../types/Types";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PriceTotal from "../components/cartComponents/PriceTotal";
 import Quantity from "../components/cartComponents/Quantity";
@@ -10,6 +10,12 @@ export default function Cart({
   setCounter,
   counter,
 }: CartProps) {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    }, [])
+    
+
   function handleDelete(id: number) {
     const filterCart = cart.filter((item) => item.id !== id);
     const itemToRemove = cart.find((item) => item.id === id);
@@ -55,7 +61,7 @@ export default function Cart({
       <div className="flex justify-center items-center mb-4">
         <h1 className="font-bold text-3xl">Cart</h1>
       </div>
-      <div className=" p-2 px-4 flex justify-between items-center bg-purple-400 rounded-md text-black">
+      <div className=" p-2 px-4 flex justify-between items-center bg-[#649AAA] rounded-md text-black">
         <p>Item</p>
         <p className="ml-[136px]">Quantity</p>
         <p>Price</p>
@@ -66,8 +72,9 @@ export default function Cart({
           <h1 className="font-bold text-center text-4xl">
             You don't have any items in your cart?
           </h1>
-          <Link to="/">
-            <button>Browse Items</button>
+          <Link to="/Shopping">
+         <button className="border-[#649AAA] border py-3 rounded-lg bg-[#649AAA] text-black font-bold px-14">
+              Browse Items</button>
           </Link>
         </div>
       ) : (
@@ -87,7 +94,7 @@ export default function Cart({
                           src={item.image}
                           alt=""
                         />
-                        <div className="flex justify-center w-[200px] space-y-2 ml-4 flex-col text-sm">
+                        <div className="flex justify-center w-[200px] space-y-2 md:ml-4 flex-col text-sm">
                           <p className="text-[15px] font-bold">{item.title}</p>
                           <p>${item.price.toFixed(2)}</p>
                           <p

@@ -8,9 +8,9 @@ export default function HomeSideBar({
   price,
 }: HomeProps) {
   return (
-    <div className="w-[200px] h-[300px] ">
+    <div className="w-[200px] h-[300px] hidden lg:flex lg:flex-col text-[#434a57] ">
       <div className="space-y-4">
-        <h1 className="font-bold">Categories</h1>
+        <h1 className="font-bold text-black text-lg">Categories</h1>
         <p
           className="cursor-pointer"
           onClick={() => setText(`/category/men's%20clothing`)}
@@ -36,20 +36,22 @@ export default function HomeSideBar({
           jewelery (4)
         </p>
       </div>
-      <div className="mt-4">
-        <h1>Price</h1>
+      <div className="mt-4 space-y-2">
+        <h1 className="font-bold text-xl text-black ">Price</h1>
         <input
           type="range"
           min="0"
-          className="bg-black custom-slider"
+          className="bg-[#649AAA] text-[#649AAA] custom-slider"
           max="999"
           value={price}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             handlePriceChange(e)
           }
         />
-        <p>Selected Price ${price}</p>
-        <button onClick={() => setPrice(0)}>Reset</button>
+        <p>
+          <span className="font-bold text-black">Selected Price:</span> ${price}
+        </p>
+        <button className="bg-[#649AAA] border-[#649AAA] border w-full py-2 rounded-lg font-bold text-black" onClick={() => setPrice(0)}>Reset Price</button>
       </div>
     </div>
   );

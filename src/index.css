@@ -12,6 +12,15 @@
   cursor: pointer;
 }
 
+.custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  background: #649AAA; 
+}
+
+
 @keyframes slideInFromRight {
   0% {
     transform: translateX(100%);
@@ -42,9 +51,59 @@
 }
 
 .img-main {
-  @apply object-fill w-full rounded-lg h-full  transform transition-transform duration-300 hover:scale-105 cursor-pointer
+  @apply w-full rounded-lg h-full  transform transition-transform duration-300 hover:scale-105 cursor-pointer  md:object-fill object-cover;
 }
 
 .main-button {
-  @apply rounded-2xl absolute bottom-6 left-6 p-3 px-8  bg-white;
+  @apply rounded-2xl absolute bottom-6 left-6 p-3 px-8  bg-white z-20;
+}
+
+.img-opactiy {
+  @apply bg-black absolute top-0 right-0 left-0 bottom-0 w-full h-full rounded-lg bg-opacity-20 z-10 pointer-events-none;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-out-right {
+  animation: slideOutRight 0.5s ease-in-out;
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animation-overlay__menu {
+  animation: overlay-menu 0.3s ease-in-out
+}
+
+@keyframes overlay-menu {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.nav-links {
+  @apply hover:text-[#649aaa] my-4 cursor-pointer transition-colors duration-300 hover:duration-300 hover:ease-in-out
 }
