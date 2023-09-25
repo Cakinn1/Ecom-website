@@ -49,7 +49,7 @@ export default function Nav({ counter, cart }: NavProps) {
             className=" cursor-pointer w-full bg-black absolute h-screen bg-opacity-30"
           ></div>
           <div
-            className={`absolute h-full bg-white min-h-screen w-[500px] right-0 p-20  ${
+            className={`absolute h-full bg-white min-h-screen w-full md:w-1/2  right-0 p-20  ${
               cartMenu ? "animate-slide-in-right" : "animate-slide-out-right"
             } `}
           >
