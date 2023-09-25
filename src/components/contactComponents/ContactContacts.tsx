@@ -1,16 +1,4 @@
-import React from "react";
-
-export interface ContactProps {
-  directions: boolean;
-  address?: string;
-  title: string;
-  adddressTrue?: boolean;
-  paragraph: boolean;
-  h1Title?: string;
-  p1Paragraph?: string;
-  h2Title?: string;
-  p2Paragraph?: string;
-}
+import { ContactProps } from "../../types/Types";
 
 export default function ContactContacts({
   directions,
@@ -39,7 +27,6 @@ export default function ContactContacts({
           </div>
         </>
       )}
-
       {directions && <button className="border py-2">Get Directions</button>}
     </div>
   );

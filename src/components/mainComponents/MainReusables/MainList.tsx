@@ -1,16 +1,5 @@
 import React from "react";
-
-export interface MainList {
-  list?: string;
-  list2?: string;
-  list3?: string;
-  list4?: string;
-  list5?: string;
-  list6?: string;
-  list7?: string;
-  title?: string;
-  showroom: boolean;
-}
+import { MainListProps } from "../../../types/Types";
 
 export default function MainList({
   list,
@@ -22,11 +11,11 @@ export default function MainList({
   list7,
   title,
   showroom,
-}: MainList) {
+}: MainListProps) {
   return (
     <>
       {showroom ? (
-          <ul className=" lg:w-1/2 ">
+        <ul className=" lg:w-1/2 ">
           <li className="mb-3 uppercase tracking-wide font-semibold text-[#FFFFFE]">
             showroom
           </li>
@@ -44,22 +33,20 @@ export default function MainList({
         </ul>
       ) : (
         <ul className="w-full  lg:w-1/3">
-        <li className="mb-3 uppercase tracking-wide font-semibold text-[#FFFFFE]">
-          {title}
-        </li>
-        <div className="space-y-2">
-          <li className="text-sm text-[#f6f6f6]">{list}</li>
-          <li className="text-sm text-[#f6f6f6]">{list2}</li>
-          <li className="text-sm text-[#f6f6f6]">{list3}</li>
-          <li className="text-sm text-[#f6f6f6]">{list4}</li>
-          <li className="text-sm text-[#f6f6f6]">{list5}</li>
-          <li className="text-sm text-[#f6f6f6]">{list6}</li>
-          <li className="text-sm text-[#f6f6f6]">{list7}</li>
-        </div>
+          <li className="mb-3 uppercase tracking-wide font-semibold text-[#FFFFFE]">
+            {title}
+          </li>
+          <div className="space-y-2">
+            <li className="text-sm text-[#f6f6f6]">{list}</li>
+            <li className="text-sm text-[#f6f6f6]">{list2}</li>
+            <li className="text-sm text-[#f6f6f6]">{list3}</li>
+            <li className="text-sm text-[#f6f6f6]">{list4}</li>
+            <li className="text-sm text-[#f6f6f6]">{list5}</li>
+            <li className="text-sm text-[#f6f6f6]">{list6}</li>
+            <li className="text-sm text-[#f6f6f6]">{list7}</li>
+          </div>
         </ul>
       )}
     </>
   );
 }
-
-

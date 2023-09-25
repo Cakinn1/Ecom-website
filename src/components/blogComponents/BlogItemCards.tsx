@@ -1,6 +1,7 @@
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { BlogDefaultDataProps } from "../../BlogData/BlogData";
+import { BlogDefaultDataProps } from "../../types/Types";
+
 
 export default function BlogItemCards({
   category,
@@ -11,7 +12,7 @@ export default function BlogItemCards({
   title,
 }: BlogDefaultDataProps) {
   return (
-    <div className=" md:w-[47%]  lg:w-[30%] bg-[#f6f9fc] rounded-3xl mb-10 cursor-not-allowed ">
+    <section className=" md:w-[47%]  lg:w-[30%] bg-[#f6f9fc] rounded-3xl mb-10 cursor-not-allowed ">
       <img
         src={img}
         className="rounded-t-3xl min-h-[300px]  object-cover"
@@ -35,6 +36,6 @@ export default function BlogItemCards({
           <p className="text-[#121519]">{personalName}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

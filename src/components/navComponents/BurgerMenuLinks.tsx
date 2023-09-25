@@ -1,11 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import { BurgerMenuProps } from '../../types/Types'
 
-interface BurgerMenuProps {
-handleBurgerMenu: () => void
-title: string
-linkto: string
-}
+
 
 export default function BurgerMenuLinks({handleBurgerMenu, linkto, title}: BurgerMenuProps) {
   return (

@@ -7,7 +7,7 @@ import ItemCards from "../homeComponents/ItemCards";
 export default function MainTrending({ handleCart, cart }: ItemCardProps) {
   const [posts, setPosts] = useState<ShoppingProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const text = "";
+  let text = "";
   async function fetchData(text: string) {
     setLoading(true);
     const data: ShoppingProps[] = await fetchAllProductData(text);

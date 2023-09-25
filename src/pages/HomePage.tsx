@@ -4,6 +4,7 @@ import { HomePageProps } from "../types/Types";
 import { useEffect } from "react";
 
 export default function HomePage({ handleCart, cart }: HomePageProps) {
+  
   useEffect(() => {
     window.scrollTo(0, 0)
     }, [])

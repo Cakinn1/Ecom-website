@@ -1,7 +1,6 @@
 import {
   ChevronDownIcon,
   FlagIcon,
-  GlobeAmericasIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import {
@@ -10,12 +9,10 @@ import {
   RiGooglePlayFill,
   RiInstagramFill,
   RiMastercardFill,
-  RiMastercardLine,
   RiPinterestFill,
   RiTelegramFill,
   RiVisaFill,
 } from "react-icons/ri";
-import { Link } from "react-router-dom";
 import MainList from "../components/mainComponents/MainReusables/MainList";
 
 export default function Footer() {

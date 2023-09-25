@@ -1,12 +1,7 @@
-import { ArchiveBoxIcon } from "@heroicons/react/24/outline";
-import React, { ReactElement } from "react";
+import { MainServicesProps } from "../../types/Types";
 
 
-export interface MainServicesProps {
-  title: string
-  paragraph: string
-  icon: ReactElement
-}
+
 
 export default function MainServices({icon, paragraph, title}:MainServicesProps){
   return (

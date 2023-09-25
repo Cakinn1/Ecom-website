@@ -1,5 +1,4 @@
-import React from "react";
-import { QuantityProps, ShoppingProps } from "../../types/Types";
+import { QuantityProps} from "../../types/Types";
 
 export default function Quantity({
   handleQuantityChange,

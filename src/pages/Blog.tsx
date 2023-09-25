@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BlogData, BlogDefaultDataProps } from "../BlogData/BlogData";
+import { BlogData } from "../BlogData/BlogData";
 import BlogItemCards from "../components/blogComponents/BlogItemCards";
 import BlogNav from "../components/blogComponents/BlogNav";
+import { BlogDefaultDataProps } from "../types/Types";
 
 export default function Blog() {
-  const initialData: BlogDefaultDataProps[] = BlogData;
+  const initialData: BlogDefaultDataProps[] = BlogData
   const [data, setData] = useState<BlogDefaultDataProps[]>(initialData);
   const [sortOrder, setSortOrder] = useState<string>("");
 
@@ -12,7 +13,6 @@ export default function Blog() {
     window.scrollTo(0, 0)
     }, [])
     
-  console.log(sortOrder)
   return (
     <div className="my-[100px] mx-auto max-w-[1200px] p-6 ">
       <>

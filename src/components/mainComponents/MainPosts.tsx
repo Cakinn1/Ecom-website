@@ -1,19 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { ItemProps, MainItemProps, ShoppingProps } from "../../types/Types";
+import { ItemProps, MainPostsProps } from "../../types/Types";
 
-export default function MainPosts({
-  item,
-  loading,
-  isDecor,
-}: {
-  item: ItemProps;
-  loading: boolean;
-  isDecor?: boolean;
-}) {
+export default function MainPosts({ item, loading, isDecor }: MainPostsProps) {
   const title = item.title.replaceAll("Naga", "Bracelet");
   const titleResult = title.substring(0, title.indexOf("Gold"));
-  console.log(titleResult);
   return (
     <>
       {loading ? (

@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function MainDiscount() {
   return (
-    <div className="">
+    <div>
       <div className="flex gap-x-12 flex-col lg:flex-row space-y-8 lg:space-y-0">
         <div className="flex flex-col  w-full lg:max-w-[600px] space-y-4">
           <h1 className="font-bold text-3xl text-center md:text-left">

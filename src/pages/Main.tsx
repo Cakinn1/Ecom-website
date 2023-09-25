@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllProductData } from "../api/ApiServices";
 import { ItemCardProps, ShoppingProps } from "../types/Types";
-import ItemCards from "../components/homeComponents/ItemCards";
 import { defaultValue } from "../components/singleItemComponents/SingleItemCard";
 import MainHome from "../components/mainComponents/MainHome";
-import MainPosts from "../components/mainComponents/MainPosts";
 import MainCategories from "../components/mainComponents/MainCategories";
 import MainTrending from "../components/mainComponents/MainTrending";
 import MainDecor from "../components/mainComponents/MainDecor";
@@ -16,11 +14,8 @@ import { Link } from "react-router-dom";
 import MainFollowUs from "../components/mainComponents/MainReusables/MainFollowUs";
 import { ArchiveBoxIcon } from "@heroicons/react/24/outline";
 import {
-  RiHeadphoneFill,
   RiHeadphoneLine,
-  RiMoneyCnyBoxFill,
   RiMoneyCnyBoxLine,
-  RiSafe2Fill,
   RiSafe2Line,
 } from "react-icons/ri";
 
@@ -33,11 +28,9 @@ export default function Main({ handleCart, cart, products }: ItemCardProps) {
   const [posts, setPosts] = useState<ShoppingProps[]>([defaultValue]);
   const [loading, setLoading] = useState<boolean>(false);
 
-
-useEffect(() => {
-window.scrollTo(0, 0)
-}, [])
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const text = "";
   async function fetchData(text: string) {

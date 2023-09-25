@@ -12,16 +12,23 @@ export default function Home({ handleCart, cart }: any) {
   const [loading, setLoading] = useState<boolean>(false);
   const [sortOrder, setSortOrder] = useState<string>("default");
 
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const uppercaseFirstLetter = products
+  .slice(0, 1)
+  .map(
+    (item) =>
+      item.category.charAt(0).toUpperCase() +
+      item.category.slice(1, item.category.length)
+  );
+
+  function handlePriceChange(event: React.ChangeEvent<HTMLInputElement>) {
     const newPrice = parseInt(event.target.value, 10);
     setPrice(newPrice);
-  };
+  }
 
   async function fetchData() {
     setLoading(true);
     const data: ShoppingProps[] = await fetchAllProductData(text);
     const filterData = data.filter((item) => item.price >= price);
-
     if (sortOrder === "lowestToHighest") {
       filterData.sort((a, b) => a.price - b.price);
     } else if (sortOrder === "highestToLowest") {
@@ -35,19 +42,11 @@ export default function Home({ handleCart, cart }: any) {
     setResults(filterData.length);
     setLoading(false);
   }
-  console.log(price);
   useEffect(() => {
     fetchData();
   }, [text, sortOrder, price]);
-  console.log(products);
 
-  const uppercaseFirstLetter = products
-    .slice(0, 1)
-    .map(
-      (item) =>
-        item.category.charAt(0).toUpperCase() +
-        item.category.slice(1, item.category.length)
-    );
+
 
   return (
     <div className="flex">
@@ -72,7 +71,9 @@ export default function Home({ handleCart, cart }: any) {
                 results
               </p>
             ) : (
-              <p className="text-[#576071] tracking-wide text-sm">Showing all ({results}) results</p>
+              <p className="text-[#576071] tracking-wide text-sm">
+                Showing all ({results}) results
+              </p>
             )}
             <select
               className="focus:outline-none text-[#576071] tracking-wide text-sm"

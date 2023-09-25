@@ -1,11 +1,6 @@
 import React from "react";
+import { ContactInputData } from "../../types/Types";
 
-export interface ContactInputData {
-  title: string;
-  placeholder: string;
-  type: string;
-  setName?: (value: string) => void;
-}
 
 export default function ContactInput({
   title,

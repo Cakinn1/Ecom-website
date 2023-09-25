@@ -1,5 +1,4 @@
-import React from "react";
-import { RiInstagramFill, RiInstagramLine } from "react-icons/ri";
+import { RiInstagramLine } from "react-icons/ri";
 
 export default function MainFollowUs() {
   return (

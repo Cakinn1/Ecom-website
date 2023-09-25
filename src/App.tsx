@@ -1,4 +1,3 @@
-// App.tsx
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
@@ -41,7 +40,7 @@ function App() {
 
   return (
     <Router>
-      <Nav counter={counter} />
+      <Nav counter={counter}  cart={cart}/>
       <Routes>
         <Route
           path="/Shopping"

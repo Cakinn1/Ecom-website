@@ -10,6 +10,7 @@ export default function ItemCards({
   isSingleItemView = false,
   isTrending = false,
 }: ItemCardProps) {
+  
   function getStarRating(rating: number) {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0;

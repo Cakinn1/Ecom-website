@@ -1,11 +1,7 @@
 import React from "react";
-import { BlogDefaultDataProps } from "../../BlogData/BlogData";
+import { BlogDefaultDataProps, BlogNavProps } from "../../types/Types";
 
-interface BlogNavProps {
-  setSortOrder: any;
-  data: BlogDefaultDataProps[];
-  sortOrder: string;
-}
+
 
 export default function BlogNav({
   setSortOrder,

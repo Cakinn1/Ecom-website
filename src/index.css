@@ -107,3 +107,9 @@
 .nav-links {
   @apply hover:text-[#649aaa] my-4 cursor-pointer transition-colors duration-300 hover:duration-300 hover:ease-in-out
 }
+
+
+
+.starting-container {
+  @apply mt-[80px] mx-auto max-w-[1200px]
+}

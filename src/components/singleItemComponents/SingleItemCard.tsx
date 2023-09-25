@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
-  fetchAllProductData,
   fetchCategory,
   fetchSingleProduct,
 } from "../../api/ApiServices";
 import { HomePageProps, ShoppingProps } from "../../types/Types";
 import ItemCards from "../homeComponents/ItemCards";
-import Quantity from "../cartComponents/Quantity";
 import SingleDescription from "./SingleDescription";
 
 export const defaultValue: ShoppingProps = {
@@ -36,9 +34,14 @@ export default function SingleItemCard({
   const [showDescription, setShowDescription] = useState<boolean>(false);
   const [showReviews, setShowReviews] = useState<boolean>(false);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { id } = useParams();
+
+  const itemQuantity = cart.reduce((total, itemToAdd) => {
+    if (itemToAdd.id === item.id) {
+      return total + itemToAdd.quantity;
+    }
+    return total;
+  }, 0);
 
   function handleShowInformation() {
     setShowInformation((prevModal) => !prevModal);
@@ -59,7 +62,10 @@ export default function SingleItemCard({
     alert("Reviews are not done :-(");
   }
 
-  const { id } = useParams();
+  function handleClick() {
+    handleCart(item);
+    setClicked(true);
+  }
 
   async function fetchData(id?: string) {
     if (!id) {
@@ -74,33 +80,18 @@ export default function SingleItemCard({
   async function fetchAllData(text: string) {
     setLoading(true);
     const allData: ShoppingProps[] = await fetchCategory(text);
-
-    // const filteredData = allData.filter((itemData) => itemData.id !== item.id);
     setProducts(allData);
     setLoading(false);
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchData(id);
-  }, [id]);
 
-  useEffect(() => {
     if (item.category) {
       fetchAllData(item.category);
     }
-  }, [item.category]);
-
-  function handleClick() {
-    handleCart(item);
-    setClicked(true);
-  }
-
-  const itemQuantity = cart.reduce((total, itemToAdd) => {
-    if (itemToAdd.id === item.id) {
-      return total + itemToAdd.quantity;
-    }
-    return total;
-  }, 0);
+  }, [id, item.category]);
 
   return (
     <div className="mt-[80px] mx-auto max-w-[1200px] p-6 ">

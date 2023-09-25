@@ -10,16 +10,9 @@ import { RiLockFill, RiMenu2Fill, RiMenu3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import BurgerMenuLinks from "../components/navComponents/BurgerMenuLinks";
 import { auth } from "../firebase/Firebase";
+import { AuthProps, NavProps } from "../types/Types";
 
-export interface NavProps {
-  counter: number;
-}
-
-export interface AuthProps {
-  email: string;
-}
-
-export default function Nav({ counter }: NavProps) {
+export default function Nav({ counter, cart }: NavProps) {
   const [cartMenu, setCartMenu] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<AuthProps | null>(null);
@@ -66,10 +59,18 @@ export default function Nav({ counter }: NavProps) {
             />
 
             <div className="flex justify-center items-center h-full text-center flex-col space-y-4">
-              <RiLockFill className="text-[70px] text-[#649AAA]" />
-              <h1 className="font-bold text-2xl">
-                Your cart is currently empty!
-              </h1>
+              {cart.length > 0 ? (
+                "add cart here"
+              ) : (
+                <>
+                  {" "}
+                  <RiLockFill className="text-[70px] text-[#649AAA]" />
+                  <h1 className="font-bold text-2xl">
+                    Your cart is currently empty!
+                  </h1>
+                </>
+              )}
+
               <Link to="/shopping" onClick={() => handleCartMenu()}>
                 <button className=" px-6 py-2 rounded-2xl text-white font-semibold bg-[#649AAA]">
                   Start shopping
@@ -161,10 +162,7 @@ export default function Nav({ counter }: NavProps) {
                   className="h-6 cursor-pointer"
                 />
                 <Link to="/Shopping/Item/cart">
-                  <ShoppingCartIcon
-                    
-                    className="h-6 cursor-pointer"
-                  />
+                  <ShoppingCartIcon className="h-6 cursor-pointer" />
                 </Link>
               </div>
             )}
@@ -195,14 +193,19 @@ export default function Nav({ counter }: NavProps) {
               </>
             )}
 
-            {((user !== null && counter <= 0) ||
-              (user !== null && counter > 0)) && (
-              <div className="absolute left-4 bottom-0 bg-green-500 h-2 w-2 rounded-full"></div>
-            )}
-
-            {((user === null && counter > 0) ||
-              (user === null && counter <= 0)) && (
-              <div className="absolute left-[80px] bottom-0 bg-red-500 h-2 w-2 rounded-full"></div>
+            {cartMenu ? (
+              ""
+            ) : (
+              <>
+                {((user !== null && counter <= 0) ||
+                  (user !== null && counter > 0)) && (
+                  <div className="absolute left-4 bottom-0 bg-green-500 h-2 w-2 rounded-full"></div>
+                )}
+                {((user === null && counter > 0) ||
+                  (user === null && counter <= 0)) && (
+                  <div className="absolute left-[80px] bottom-0 bg-red-500 h-2 w-2 rounded-full"></div>
+                )}
+              </>
             )}
           </div>
         </div>

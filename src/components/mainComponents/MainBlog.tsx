@@ -1,10 +1,6 @@
-import React from "react";
+import { MainBlogProps } from "../../types/Types";
 
-export interface MainBlogProps {
-  title: string;
-  paragraph: string;
-  img: string;
-}
+
 
 export default function MainBlog({ title, paragraph, img }: MainBlogProps) {
   return (

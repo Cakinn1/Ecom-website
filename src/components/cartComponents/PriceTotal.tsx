@@ -1,6 +1,7 @@
-import React from "react";
+import { PriceTotalProps } from "../../types/Types";
 
-export default function PriceTotal({ subTotal, tax }: any) {
+
+export default function PriceTotal({ subTotal, tax }: PriceTotalProps) {
   return (
     <div className="flex flex-col  ml-auto lg:w-[250px]   pr-1 space-y-4">
       <hr className="border-black border-2" />

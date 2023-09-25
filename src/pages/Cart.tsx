@@ -10,11 +10,13 @@ export default function Cart({
   setCounter,
   counter,
 }: CartProps) {
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    }, [])
-    
+  
+  const subTotal = cart
+    .reduce((subtotal, item) => subtotal + item.price * item.quantity, 0)
+    .toFixed(2);
+  const tax = cart
+    .reduce((taxTotal, item) => taxTotal + item.quantity * 2.9, 0)
+    .toFixed(2);
 
   function handleDelete(id: number) {
     const filterCart = cart.filter((item) => item.id !== id);
@@ -46,12 +48,10 @@ export default function Cart({
       }
     }
   }
-  const subTotal = cart
-    .reduce((subtotal, item) => subtotal + item.price * item.quantity, 0)
-    .toFixed(2);
-  const tax = cart
-    .reduce((taxTotal, item) => taxTotal + item.quantity * 2.9, 0)
-    .toFixed(2);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div
@@ -73,8 +73,9 @@ export default function Cart({
             You don't have any items in your cart?
           </h1>
           <Link to="/Shopping">
-         <button className="border-[#649AAA] border py-3 rounded-lg bg-[#649AAA] text-black font-bold px-14">
-              Browse Items</button>
+            <button className="border-[#649AAA] border py-3 rounded-lg bg-[#649AAA] text-black font-bold px-14">
+              Browse Items
+            </button>
           </Link>
         </div>
       ) : (

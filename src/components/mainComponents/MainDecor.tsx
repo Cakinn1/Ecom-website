@@ -9,16 +9,22 @@ export default function MainDecor() {
   const [posts, setPosts] = useState<ShoppingProps[]>([defaultValue]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const text = "";
-  async function fetchData(text: string) {
+  let text = "";
+  async function fetchData(text?: string) {
     setLoading(true);
-    const data: ShoppingProps[] = await fetchAllProductData(text);
-    setLoading(false);
-    setPosts(data);
+    try {
+      const data: ShoppingProps[] = await fetchAllProductData(text);
+      setLoading(false);
+      setPosts(data);
+    } catch (error) {
+      setLoading(false);
+      console.error("error", error);
+      throw error;
+    }
   }
   useEffect(() => {
     fetchData(text);
-  }, []);
+  }, [text]);
 
   return (
     <section className="relative group  my-[100px]" style={{ height: "700px" }}>

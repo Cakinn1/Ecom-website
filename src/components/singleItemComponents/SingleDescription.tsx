@@ -1,12 +1,8 @@
 import React from "react";
+import { SingleDescriptionProps } from "../../types/Types";
 
 
-export interface SingleDescriptionProps {
-  title?: string
-  paragraph?: string
-  image: string
-  width?: boolean
-}
+
 
 export default function SingleDescription({title, paragraph, image, width}:SingleDescriptionProps) {
   return (

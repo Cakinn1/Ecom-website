@@ -1,12 +1,5 @@
+import { BlogDefaultDataProps } from "../types/Types";
 
-export interface BlogDefaultDataProps {
-  date: string;
-  category: string;
-  title: string;
-  paragraph: string;
-  personalName: string;
-  img: string
-}
 
 export const BlogData: BlogDefaultDataProps[] = [
     {
