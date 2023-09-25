@@ -14,12 +14,11 @@
 
 .custom-slider::-webkit-slider-thumb {
   appearance: none;
-  width: 20px; 
-  height: 20px; 
-  border-radius: 50%; 
-  background: #649AAA; 
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #649aaa;
 }
-
 
 @keyframes slideInFromRight {
   0% {
@@ -39,10 +38,6 @@
 .animate-slideInFromRight:focus-visible {
   transform: translateY(-1.75rem);
 }
-
-/* .animate-slideInFromRight {
-    @apply absolute right-0 transform translate-x-full  transition-transform duration-500 ease-in-out;
-  } */
 
 .hover-button:hover button {
   background-color: #434a57;
@@ -89,7 +84,7 @@
 }
 
 .animation-overlay__menu {
-  animation: overlay-menu 0.3s ease-in-out
+  animation: overlay-menu 0.3s ease-in-out;
 }
 
 @keyframes overlay-menu {
@@ -103,13 +98,10 @@
   }
 }
 
-
 .nav-links {
-  @apply hover:text-[#649aaa] my-4 cursor-pointer transition-colors duration-300 hover:duration-300 hover:ease-in-out
+  @apply hover:text-[#649aaa] my-4 cursor-pointer transition-colors duration-300 hover:duration-300 hover:ease-in-out;
 }
 
-
-
 .starting-container {
-  @apply mt-[80px] mx-auto max-w-[1200px]
+  @apply mt-[80px] mx-auto max-w-[1200px];
 }
