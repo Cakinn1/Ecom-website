@@ -18,6 +18,7 @@ import {
   RiMoneyCnyBoxLine,
   RiSafe2Line,
 } from "react-icons/ri";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export interface MainProps {
   posts: ShoppingProps[];
@@ -27,11 +28,7 @@ export interface MainProps {
 export default function Main({ handleCart, cart, products }: ItemCardProps) {
   const [posts, setPosts] = useState<ShoppingProps[]>([defaultValue]);
   const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const [onLoad, setOnLoad] = useState<boolean>(true);
   const text = "";
   async function fetchData(text: string) {
     setLoading(true);
@@ -40,11 +37,27 @@ export default function Main({ handleCart, cart, products }: ItemCardProps) {
     setPosts(data);
     setLoading(false);
   }
+
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setOnLoad(false);
+    }, 3000);
+    window.scrollTo(0, 0);
     fetchData(text);
+
+    return () => clearInterval(timer);
   }, []);
   return (
-    <div>
+    <div className="relative">
+      {onLoad && (
+        <div
+          className="bg-[#101820]  animate-slide-out-top absolute w-screen flex justify-center items-center -top-20 z-50"
+          style={{ height: "200vh" }}
+        >
+          <AiOutlineLoading3Quarters className="text-white mb-[100vh] text-4xl animate-spin" />
+        </div>
+      )}
+
       <MainHome posts={posts} loading={loading} />
       <div className="my-[100px] ">
         <h1 className="mx-auto max-w-[1200px] p-6 font-bold text-3xl text-center md:text-left">

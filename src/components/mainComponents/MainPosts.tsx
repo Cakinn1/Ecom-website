@@ -10,7 +10,7 @@ export default function MainPosts({ item, loading, isDecor }: MainPostsProps) {
         new Array(3).fill(0).map((_, index) => (
           <div
             key={index}
-            className="lg:w-[30%] w-full md:w-[46%] bg-white items-center z-50 p-8 m-3 rounded-lg flex min-h-[140px] h-full gap-x-4 "
+            className="lg:w-[30%] w-full md:w-[46%] bg-white items-center z-30 p-8 m-3 rounded-lg flex min-h-[140px] h-full gap-x-4 "
           >
             <div className="h-[50px] w-[70px] bg-gray-400 animate-pulse rounded-md" />
             <div className="flex flex-col justify-center space-y-4">

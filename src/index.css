@@ -105,3 +105,16 @@
 .starting-container {
   @apply mt-[80px] mx-auto max-w-[1200px];
 }
+
+.animate-slide-out-top {
+  animation: slideOutTop 1s ease-in-out 2s;
+}
+
+@keyframes slideOutTop {
+    100% {
+      transform: translateY(100%);
+    }
+    0% {
+      transform: translateY(0);
+    }
+}
