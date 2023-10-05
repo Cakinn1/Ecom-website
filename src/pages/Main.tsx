@@ -106,9 +106,9 @@ export default function Main({ handleCart, cart, products }: ItemCardProps) {
         <h1 className="font-bold text-4xl px-6">Ideas for your home</h1>
         <MainIdeas />
       </div>
-      <div className=" mx-auto max-w-[1200px] p-6">
+      {/* <div className=" mx-auto max-w-[1200px] p-6">
         <MainDiscount />
-      </div>
+      </div> */}
       <div className="mx-auto max-w-[1200px] p-6 my-[100px]">
         <h1 className="font-bold text-3xl tracking-wide">Our Blog</h1>
         <div className="mt-[20px] flex flex-wrap gap-x-4 space-y-8 md:space-y-0">
